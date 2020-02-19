@@ -12,6 +12,7 @@
     -moz-osx-font-smoothing: grayscale; // for Mac
     color: #333; //  more soft black color
     font-family: $font-Roboto;
+    font-size: 16px;
     line-height: 1.5;
   }
 </style>

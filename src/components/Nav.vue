@@ -31,8 +31,8 @@
 <style lang="scss" scoped>
   @import "~@/assets/style/helper.scss";
   nav {
+    @extend %outerShadow;
     display: flex;
-    box-shadow: 0 0 3px;
     flex-direction: row;
     font-size: 12px;
     > .item {
@@ -43,11 +43,11 @@
       align-items: center;
       flex-direction: column;
     }
-    .icon{
+    .icon {
       width: 32px;
       height: 32px;
     }
-    > .item.selected{
+    > .item.selected {
       color: $color-highlight;
     }
   }
