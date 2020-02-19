@@ -23,15 +23,14 @@
 
 <script lang="ts">
   export default {
-    name: 'Tags.vue'
+    name: 'Tags.vue',
   };
 </script>
 
 <style lang="scss" scoped>
   .tags {
     font-size: 14px;
-    padding: 16px;
-    flex-grow: 1;
+    padding: 16px; flex-grow: 1;
     display: flex;
     flex-direction: column-reverse;
     > .current {

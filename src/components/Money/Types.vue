@@ -1,16 +1,31 @@
 <template>
   <div>
     <ul class="types">
-      <li class="selected">Spend</li>
-      <li>Income</li>
+      <li :class="type === '-' && 'selected'"
+      @click="selectType('-')">Spend</li>
+      <li :class="type === '+' && 'selected'"
+      @click="selectType('+')">Income</li>
     </ul>
   </div>
 </template>
 
-<script lang="ts">
+<script>
   export default {
-    name: 'Types'
-  };
+    name: 'Types.vue',
+    data() {
+      return{
+        type:'-' // '-': spend, '+' : income
+      }
+    },
+    methods: {
+      selectType(type){
+        if(type !== '-' && type !== '+'){
+          throw new Error('type is unknown')
+        }
+        this.type = type
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
