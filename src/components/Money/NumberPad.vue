@@ -1,29 +1,64 @@
 <template>
   <div class="numberPad">
-    <div class="output">100</div>
+    <div class="output">{{output}}</div>
     <div class="buttons">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>DEL</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>AC</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button class="ok">OK</button>
-      <button class="zero">0</button>
-      <button>.</button>
+      <button @click="inputContent">1</button>
+      <button @click="inputContent">2</button>
+      <button @click="inputContent">3</button>
+      <button @click="del">DEL</button>
+      <button @click="inputContent">4</button>
+      <button @click="inputContent">5</button>
+      <button @click="inputContent">6</button>
+      <button @click="ac">AC</button>
+      <button @click="inputContent">7</button>
+      <button @click="inputContent">8</button>
+      <button @click="inputContent">9</button>
+      <button @click="ok" class="ok">OK</button>
+      <button @click="inputContent" class="zero">0</button>
+      <button @click="inputContent">.</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  export default {
-    name: 'NumberPad.vue'
-  };
+  import Vue from 'vue';
+  import {Component} from 'vue-property-decorator';
+
+  @Component
+  export default class NumberPad extends Vue {
+    output = '0';
+
+    inputContent(event: MouseEvent) {
+      const button = (event.target as HTMLButtonElement);
+      const input = button.textContent as string;
+      if (this.output.length === 16) {return;}
+      if (this.output === '0') {
+        if ('0123456789'.indexOf(input) >= 0) {
+          this.output = input;
+          return;
+        } else {
+          this.output += input;
+        }
+        return;
+      }
+      if (this.output.indexOf('.') >= 0 && input === '.') {return;}
+      this.output += input;
+    }
+
+    del() {
+      if (this.output.length === 1) {
+        this.output = '0';
+      } else {
+        this.output = this.output.slice(0, -1);
+      }
+    }
+
+    ac() {
+      this.output = '0';
+    }
+
+    ok() {}
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -36,9 +71,7 @@
       font-family: monospace;
       padding: 9px 16px;
       text-align: right;
-      // only down shadow
-      box-shadow: inset 0 -5px 5px -5px fade_out(black, 0.6),
-      inset 0 5px 5px -5px fade_out(black, 0.6);
+      height: 72px;
     }
     .buttons {
       @extend %clearfix;
