@@ -25,22 +25,6 @@
       this.type = type;
     }
   }
-  // export default {
-  //   name: 'Types.vue',
-  //   data() {
-  //     return{
-  //       type:'-' // '-': spend, '+' : income
-  //     }
-  //   },
-  //   methods: {
-  //     selectType(type){
-  //       if(type !== '-' && type !== '+'){
-  //         throw new Error('type is unknown')
-  //       }
-  //       this.type = type
-  //     }
-  //   }
-  // }
 </script>
 
 <style lang="scss" scoped>
