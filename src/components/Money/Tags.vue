@@ -1,11 +1,11 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button>Add Tags</button>
+      <button @click="create">Add Tags</button>
     </div>
     <ul class="current">
       <li v-for="tag in dataSource" :key="tag"
-          :class="{selected:  selectedTags.indexOf(tag)>=0}"
+          :class="{selected:selectedTags.indexOf(tag)>=0}"
           @click="toggle(tag)">{{tag}}
       </li>
     </ul>
@@ -19,7 +19,7 @@
 
   @Component
   export default class Tags extends Vue {
-    @Prop() dataSource: string[];
+    @Prop() readonly dataSource: string[] | undefined;
     selectedTags: string[] = [];
 
     toggle(tag: string) {
@@ -29,7 +29,15 @@
       } else {
         this.selectedTags.push(tag);
       }
+    }
 
+    create() {
+      const name = window.prompt('Please type tags name here.');
+      if (name === '') {
+        window.alert('Please type the tags again.');
+      } else if (this.dataSource) {
+        this.$emit('update: dataSource', [...this.dataSource, name]);
+      }
     }
   }
 </script>
