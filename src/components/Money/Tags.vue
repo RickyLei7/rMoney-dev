@@ -36,7 +36,7 @@
       if (name === '') {
         window.alert('Please type the tags again.');
       } else if (this.dataSource) {
-        this.$emit('update: dataSource', [...this.dataSource, name]);
+        this.$emit('update:dataSource',[...this.dataSource,name])
       }
     }
   }
@@ -45,13 +45,13 @@
 <style lang="scss" scoped>
   .tags {
     font-size: 14px;
-    padding: 16px; flex-grow: 1;
+    padding: 16px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column-reverse;
     > .current {
       display: flex;
       flex-wrap: wrap;
-      overflow: auto;
       > li {
         $bg: #d9d9d9;
         background: $bg;

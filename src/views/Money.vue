@@ -18,7 +18,7 @@
     components: {Tags, Notes, Types, NumberPad},
     data() {
       return {
-        tags: ['Cloth', 'Food', 'House', 'Transport']
+        tags: ['Cloth', 'Food', 'House', 'Transport','xxx']
       }
     }
   };
