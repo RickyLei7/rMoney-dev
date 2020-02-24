@@ -8,7 +8,8 @@
       </router-link>
     </div>
     <div class="createTag-wrapper">
-      <button class="createTag" @click="createTag">Create new label</button>
+      <Button class="createTag" @click="createTag">Create new label</Button>
+      <Button>xxx</Button>
     </div>
   </Layout>
 </template>

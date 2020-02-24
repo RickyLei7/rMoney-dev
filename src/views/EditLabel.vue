@@ -1,10 +1,17 @@
 <template>
   <Layout>
-    <div>
-      <Icon name="left"/>
-      <span>Edit Label</span>
+    <div class="navBar">
+      <Icon class="leftIcon" name="left"/>
+      <span class="title">Edit Label</span>
+      <span class="rightIcon"></span>
     </div>
-    <Notes filed-name="Tag Name" placeholder="Please type tag name"/>
+    <div class="form-wrapper">
+      <FormItem filed-name="Tag Name" placeholder="Please type tag name"/>
+    </div>
+
+    <div class="button-wrapper">
+      <Button>Delete Tag</Button>
+    </div>
   </Layout>
 </template>
 
@@ -12,10 +19,11 @@
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
   import tagListModel from '@/models/tagListModel';
-  import Notes from '@/components/Money/Notes.vue';
+  import FormItem from '@/components/Money/FormItem.vue';
+  import Button from '@/components/Button.vue';
 
   @Component({
-    components: {Notes}
+    components: {Button, FormItem}
   })
   export default class EditLabel extends Vue {
     create() {
@@ -33,5 +41,33 @@
 </script>
 
 <style lang="scss" scoped>
+.navBar{
+  text-align: center;
+  font-size: 16px;
+  padding: 12px 16px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > .title{
 
+  }
+  > .leftIcon{
+    width: 24px;
+    height: 24px;
+  }
+  > .rightIcon{
+    height: 24px;
+    left: 24px;
+  }
+}
+  .form-wrapper{
+    background: white;
+    margin-top: 8px;
+  }
+  .button-wrapper{
+    text-align: center;
+    padding: 16px;
+    margin-top: 44-16px;
+  }
 </style>
