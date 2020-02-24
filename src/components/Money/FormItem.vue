@@ -4,7 +4,8 @@
     <label class="formItem">
       <span class="name">{{this.filedName}}</span>
       <input type="text"
-             v-model="value"
+             :value="value"
+             @input="onValueChanged($event.target.value)"
              :placeholder="placeholder">
     </label>
   </div>
@@ -16,7 +17,7 @@
 
   @Component
   export default class FormItem extends Vue {
-    value = '';
+    @Prop({default: ''}) readonly value!: string;
     @Prop({required: true}) filedName!: string;
     @Prop() placeholder?: string;
 
@@ -30,7 +31,6 @@
 <style lang="scss" scoped>
   .formItem {
     font-size: 14px;
-
     padding-left: 16px;
     display: flex;
     align-items: center;

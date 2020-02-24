@@ -10,7 +10,7 @@
     </div>
 
     <div class="button-wrapper">
-      <Button>Delete Tag</Button>
+      <Button>Delete</Button>
     </div>
   </Layout>
 </template>
