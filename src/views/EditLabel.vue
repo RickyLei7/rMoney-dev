@@ -28,7 +28,7 @@
     components: {Button, FormItem}
   })
   export default class EditLabel extends Vue {
-    tag?: { id: string;name: string } = undefined;
+    tag?: { id: string; name: string } = undefined;
 
     created() {
       const id = this.$route.params.id;
@@ -50,7 +50,11 @@
 
     remove() {
       if (this.tag) {
-        tagListModel.remove(this.tag.id);
+        if (tagListModel.remove(this.tag.id)) {
+          this.$router.back();
+        } else {
+          window.alert('Delete fail');
+        }
       }
     }
 
