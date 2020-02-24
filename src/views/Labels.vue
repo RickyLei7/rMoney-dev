@@ -28,12 +28,7 @@
     createTag() {
       const name = window.prompt('Please type the Tag name.');
       if (name) {
-        const message = tagListModel.create(name);
-        if (message === 'duplicated') {
-          window.alert('Tag name duplicated.');
-        } else if (message === 'success') {
-          window.alert('Add tag Success.');
-        }
+       window.createTag(name)
       }
     }
   }
