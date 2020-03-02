@@ -9,7 +9,6 @@
     </div>
     <div class="createTag-wrapper">
       <Button class="createTag" @click="createTag">Create new label</Button>
-      <Button>xxx</Button>
     </div>
   </Layout>
 </template>
@@ -28,7 +27,7 @@
     createTag() {
       const name = window.prompt('Please type the Tag name.');
       if (name) {
-       window.createTag(name)
+       window.createTag(name);
       }
     }
   }

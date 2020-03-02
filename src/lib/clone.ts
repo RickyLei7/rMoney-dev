@@ -1,6 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 function clone(data: any) {
-  return JSON.parse((JSON.stringify(data)));
+  return JSON.parse(JSON.stringify(data));
 
 }
 
