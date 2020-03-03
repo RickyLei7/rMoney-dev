@@ -21,8 +21,7 @@
   @Component({
     computed:{
       tagList(){
-        // Todo
-        return []
+        return this.$store.state.tagList
       }
     }
   })
@@ -30,6 +29,9 @@
     // tagList = store.fetchTags();
     selectedTags: string[] = [];
 
+    created() {
+      this.$store.commit('fetchTags');
+    }
     toggle(tag: string) {
       const index = this.selectedTags.indexOf(tag);
       if (index >= 0) {
@@ -45,9 +47,7 @@
       if (!name) {
         return window.alert('Please type the tags again.');
       }
-      // Todo
-      // store.createTag(name);
-
+      this.$store.commit('createTag', name);
     }
   }
 </script>
