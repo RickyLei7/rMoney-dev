@@ -16,16 +16,20 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
-  import store from '@/store/index2';
+  import  Button from '@/components/Button.vue';
 
-  @Component
+  @Component({
+    components: {Button}
+  })
   export default class Labels extends Vue {
-    tags = store.tagList;
+    // Todo
+    tags =  []; //store.tagList;
 
     createTag() {
       const name = window.prompt('Please type the Tag name.');
       if (name) {
-       store.createTag(name);
+        // Todo
+       // store.createTag(name);
       }
     }
   }

@@ -5,7 +5,7 @@
     <div class="notes">
       <FormItem filed-name="Note:" placeholder="Please type note here." @update:value="onUpdateNotes"/>
     </div>
-    <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
+    <Tags/>
   </layout>
 </template>
 
@@ -16,7 +16,9 @@
   import FormItem from '@/components/Money/FormItem.vue';
   import Tags from '@/components/Money/Tags.vue';
   import {Component} from 'vue-property-decorator';
-  import store from '@/store/index2';
+
+  import store from '@/store/index';
+  import Button from '@/components/Button.vue';
 
 
   // const version = window.localStorage.getItem('version') || '0';
@@ -34,18 +36,19 @@
   // // window.localStorage.setItem('version', '0.0.2');
 
   @Component({
-    components: {Tags, FormItem, Types, NumberPad},
+    components: {Button, Tags, FormItem, Types, NumberPad},
+    computed:{
+      count(){
+        return this.$store.state.recordList;
+      }
+    }
   })
   export default class Money extends Vue {
-    tags = store.tagList;
-    recordList = store.recordList;
     record: RecordItem = {tags: [], notes: '', type: '-', amount: 0};
 
-    onUpdateTags(value: string[]) {
-      this.record.tags = value;
-
+    created(){
+      this.$store.commit('fetchRecords')
     }
-
     onUpdateNotes(value: string) {
       this.record.notes = value;
     }
@@ -55,8 +58,9 @@
     }
 
     saveRecord() {
-      store.createRecord(this.record);
+      this.$store.commit('createRecord',this.record);
     }
+
 
   }
 </script>
