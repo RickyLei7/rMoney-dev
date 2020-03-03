@@ -36,19 +36,19 @@
   // // window.localStorage.setItem('version', '0.0.2');
 
   @Component({
-    components: {Button, Tags, FormItem, Types, NumberPad},
-    computed:{
-      count(){
-        return this.$store.state.recordList;
-      }
-    }
+    components: {Tags, FormItem, Types, NumberPad},
   })
   export default class Money extends Vue {
+    get recordList() {
+      return this.$store.state.recordList;
+    }
+
     record: RecordItem = {tags: [], notes: '', type: '-', amount: 0};
 
-    created(){
-      this.$store.commit('fetchRecords')
+    created() {
+      this.$store.commit('fetchRecords');
     }
+
     onUpdateNotes(value: string) {
       this.record.notes = value;
     }
@@ -58,7 +58,7 @@
     }
 
     saveRecord() {
-      this.$store.commit('createRecord',this.record);
+      this.$store.commit('createRecord', this.record);
     }
 
 
