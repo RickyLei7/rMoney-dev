@@ -1,7 +1,7 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button @click="create">Add Tags</button>
+      <button @click="createTag">Add Tags</button>
     </div>
     <ul class="current">
       <li v-for="tag in tagList" :key="tag.id"
@@ -16,22 +16,24 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
+  import {mixins} from 'vue-class-component';
+  import TagHelper from '@/mixins/TagHelper';
 
 
   @Component({
-    computed:{
-      tagList(){
-        return this.$store.state.tagList
+    computed: {
+      tagList() {
+        return this.$store.state.tagList;
       }
     }
   })
-  export default class Tags extends Vue {
-    // tagList = store.fetchTags();
+  export default class Tags extends mixins(TagHelper) {
     selectedTags: string[] = [];
 
     created() {
       this.$store.commit('fetchTags');
     }
+
     toggle(tag: string) {
       const index = this.selectedTags.indexOf(tag);
       if (index >= 0) {
@@ -40,14 +42,6 @@
         this.selectedTags.push(tag);
       }
       this.$emit('update:value', this.selectedTags);
-    }
-
-    create() {
-      const name = window.prompt('Please type tags name here.');
-      if (!name) {
-        return window.alert('Please type the tags again.');
-      }
-      this.$store.commit('createTag', name);
     }
   }
 </script>
