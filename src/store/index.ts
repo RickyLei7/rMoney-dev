@@ -11,6 +11,7 @@ const store = new Vuex.Store({
   state: {
     recordList: [],
     createRecordError: null,
+    createTagError: null,
     tagList: [],
     currentTag: undefined,
   } as RootState,
@@ -70,16 +71,15 @@ const store = new Vuex.Store({
       }
     },
     createTag(state, name: string) {
+      state.createTagError = null;
       const names = state.tagList.map(item => item.name);
       if (names.indexOf(name) >= 0) {
-        window.alert('Tag name duplicated');
-
+        state.createTagError = new Error('Tag Name Duplicated');
+        return;
       }
       const id = createId().toString();
       state.tagList.push({id, name: name});
       store.commit('saveTags');
-      window.alert('Add tag success');
-
     },
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
