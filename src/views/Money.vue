@@ -74,15 +74,17 @@
     // }`
 
     saveRecord() {
-      if (!this.record.tags || this.record.tags.length === 0) {
-        return window.alert('Please select a tag.');
-      }
+      this.$store.commit('createRecord', this.record);
 
-      if (this.$store.state.createRecordError === null) {
-        window.alert('Saved');
-        this.$store.commit('createRecord', this.record);
-        this.record.notes = '';
-      }
+      // if (!this.record.tags || this.record.tags.length === 0) {
+      //   return window.alert('Please select a tag.');
+      // }
+      //
+      // if (this.$store.state.createRecordError === null) {
+      //   window.alert('Saved');
+      //   this.$store.commit('createRecord', this.record);
+      //   this.record.notes = '';
+      // }
 
     }
 
