@@ -1,14 +1,25 @@
 <template>
   <layout class-prefix="layout">
-    <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
+    <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
+
     <Tabs :data-source="recordTypeList"
-          :value.sync="record.type"
-    />
+          :value.sync="record.type"/>
     <div class="notes">
       <FormItem filed-name="Note:"
                 placeholder="Please type note here."
-                :value.sync="record.notes"/>
+                @update:value="onUpdateNotes"/>
     </div>
+
+
+    <!--    <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>-->
+    <!--    <Tabs :data-source="recordTypeList"-->
+    <!--          :value.sync="record.type"-->
+    <!--    />-->
+    <!--    <div class="notes">-->
+    <!--      <FormItem filed-name="Note:"-->
+    <!--                placeholder="Please type note here."-->
+    <!--                :value.sync="record.notes"/>-->
+    <!--    </div>-->
     <Tags @update:value="record.tags = $event"/>
   </layout>
 </template>
@@ -58,17 +69,18 @@
       this.record.notes = value;
     }
 
-    onUpdateAmount(value: string) {
-      this.record.amount = parseFloat(value);
-    }
+    // `onUpdateAmount(value: string) {
+    //   this.record.amount = parseFloat(value);
+    // }`
 
     saveRecord() {
       if (!this.record.tags || this.record.tags.length === 0) {
         return window.alert('Please select a tag.');
       }
-      this.$store.commit('createRecord', this.record);
+
       if (this.$store.state.createRecordError === null) {
         window.alert('Saved');
+        this.$store.commit('createRecord', this.record);
         this.record.notes = '';
       }
 

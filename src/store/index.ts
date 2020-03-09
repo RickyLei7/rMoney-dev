@@ -68,6 +68,7 @@ const store = new Vuex.Store({
       if (!state.tagList || state.tagList.length === 0) {
         store.commit('createTag', 'Food');
         store.commit('createTag', 'House');
+        store.commit('createTag', 'Salary');
       }
     },
     createTag(state, name: string) {

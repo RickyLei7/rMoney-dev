@@ -35,7 +35,7 @@
   })
   export default class Statistics extends Vue {
     tagString(tags: Tag[]) {
-      return tags.length === 0 ? 'No Tag' : tags.map(t=>t.name).join(',');
+      return tags.length === 0 ? 'No Tag' : tags.map(t => t.name).join(',');
     }
 
     beautify(string: string) {
@@ -56,16 +56,18 @@
       return (this.$store.state as RootState).recordList;
     }
 
+
     get groupedList() {
       const {recordList} = this;
-
-
       const newList = clone(recordList)
         .filter(r => r.type === this.type)
         .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
-      if (recordList.length === 0) {return [];}
+
+      if (newList.length === 0) {return [] as Result;}
+
       type Result = { title: string, total?: number, items: RecordItem[] }[]
-      const result: Result = [{title: dayjs(recordList[0].createdAt).format('YYYY-MM-DD'), items: [recordList[0]]}];
+      const result: Result = [{title: dayjs(newList[0].createdAt).format('YYYY-MM-DD'), items: [newList[0]]}];
+
       for (let i = 0; i < newList.length; i++) {
         const current = newList[i];
         const last = result[result.length - 1];
@@ -93,7 +95,7 @@
 
 
 <style lang="scss" scoped>
-  .noResult{
+  .noResult {
     padding: 16px;
     text-align: center;
   }

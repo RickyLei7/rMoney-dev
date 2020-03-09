@@ -31,7 +31,7 @@ window.onload = function () {
 if (document.documentElement.clientWidth > 500) {
   window.alert('For the best experience, please use your cell phone.');
   const img = document.createElement('img');
-  img.src = '/rMoneyQRCode.png';
+  img.src = './QRCode.jpeg';
   img.style.position = 'fixed';
   img.style.left = '50%';
   img.style.top = '50%';
