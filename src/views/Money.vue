@@ -5,9 +5,11 @@
           :value.sync="record.type"
     />
     <div class="notes">
-      <FormItem filed-name="Note:" placeholder="Please type note here." @update:value="onUpdateNotes"/>
+      <FormItem filed-name="Note:"
+                placeholder="Please type note here."
+                :value.sync="record.notes"/>
     </div>
-    <Tags/>
+    <Tags @update:value="record.tags = $event"/>
   </layout>
 </template>
 
@@ -61,7 +63,15 @@
     }
 
     saveRecord() {
+      if (!this.record.tags || this.record.tags.length === 0) {
+        return window.alert('Please select a tag.');
+      }
       this.$store.commit('createRecord', this.record);
+      if (this.$store.state.createRecordError === null) {
+        window.alert('Saved');
+        this.record.notes = '';
+      }
+
     }
 
 
