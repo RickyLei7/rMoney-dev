@@ -11,9 +11,8 @@ import Icon from '@/components/Icon.vue';
 Vue.config.productionTip = false;
 
 Vue.component('Nav', Nav);
-Vue.component('Layout', Layout);
 Vue.component('Icon', Icon);
-
+Vue.component('Layout', Layout);
 
 new Vue({
   router,

@@ -1,17 +1,16 @@
 <template>
   <nav>
-    <router-link to="/money" class="item" active-class="selected">
-      <Icon name="money"/>
-      Money
-    </router-link>
-
     <router-link to="/labels" class="item" active-class="selected">
       <Icon name="label"/>
       Label
     </router-link>
 
-    <router-link to="/statistics" class="item" active-class="selected">
+    <router-link to="/money" class="item" active-class="selected">
+      <Icon name="moneyBag"/>
+      Money
+    </router-link>
 
+    <router-link to="/statistics" class="item" active-class="selected">
       <Icon name="statistics"/>
       Statistics
     </router-link>
@@ -32,9 +31,11 @@
   @import "~@/assets/style/helper.scss";
   nav {
     @extend %outerShadow;
+    background: #3d3d3d;
     display: flex;
     flex-direction: row;
     font-size: 12px;
+    color: #cccccc;
     > .item {
       padding: 2px 0;
       width: 33.33%;
@@ -46,10 +47,13 @@
     .icon {
       width: 32px;
       height: 32px;
+      color: #cccccc;
     }
     > .item.selected {
       color: $color-highlight;
+
     }
+
   }
 
 </style>
