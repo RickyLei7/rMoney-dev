@@ -54,7 +54,6 @@
       return (this.$store.state as RootState).recordList;
     }
 
-
     get groupedList() {
       const {recordList} = this;
       const newList = clone(recordList).filter(r => r.type === this.type).sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
