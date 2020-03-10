@@ -44,7 +44,7 @@
 
 <style lang="scss" scoped>
   .tags {
-    background: white;
+    background: #f6ffe0;
     font-size: 14px;
     padding: 16px;
     flex-grow: 1;
@@ -54,7 +54,7 @@
       display: flex;
       flex-wrap: wrap;
       > li {
-        $bg: #d9d9d9;
+        $bg: #ff930a;
         background: $bg;
         $h: 24px;
         height: $h;

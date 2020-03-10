@@ -80,5 +80,6 @@
   }
   .notes {
     padding: 12px 0;
+
   }
 </style>

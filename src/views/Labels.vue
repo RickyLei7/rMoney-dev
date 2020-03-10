@@ -14,7 +14,6 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
   import Button from '@/components/Button.vue';
   import {mixins} from 'vue-class-component';
@@ -37,7 +36,7 @@
 
 <style lang="scss" scoped>
   .tags {
-    background: white;
+    background: #f5f5f5;
     font-size: 16px;
     padding-left: 16px;
     > .tag {
@@ -55,8 +54,8 @@
     }
   }
   .createTag {
-    background: #767676;
-    color: white;
+    background: #ff930a;
+    color:black;
     border-radius: 4px;
     border: none;
     height: 40px;

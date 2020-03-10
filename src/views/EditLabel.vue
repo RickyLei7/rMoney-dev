@@ -66,12 +66,11 @@
     text-align: center;
     font-size: 16px;
     padding: 12px 16px;
-    background: white;
+    background: #f5f5f5;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    > .title {
-    }
+
     > .leftIcon {
       width: 24px;
       height: 24px;

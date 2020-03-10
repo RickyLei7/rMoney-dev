@@ -95,9 +95,9 @@
   }
   ::v-deep {
     .type-tabs-item {
-      background: #c4c4c4;
+      background: #ff930a;
       &.selected {
-        background: white;
+        background: #f5f5f5;
         &::after {
           display: none;
         }
@@ -118,10 +118,11 @@
     @extend %item;
   }
   .record {
-    background: white;
+    background: #f5f5f5;
     @extend %item
   }
   .notes {
+
     margin-right: auto;
     margin-left: 16px;
     color: #999;

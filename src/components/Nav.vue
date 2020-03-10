@@ -31,11 +31,11 @@
   @import "~@/assets/style/helper.scss";
   nav {
     @extend %outerShadow;
-    background: #3d3d3d;
+    background: #f6ffe0;
     display: flex;
     flex-direction: row;
     font-size: 12px;
-    color: #cccccc;
+    color: #000000;
     > .item {
       padding: 2px 0;
       width: 33.33%;
@@ -51,7 +51,6 @@
     }
     > .item.selected {
       color: $color-highlight;
-
     }
 
   }
