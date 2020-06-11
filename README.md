@@ -2,7 +2,7 @@
 
 # rmoney-1
 
-rMoney is a simple bookkeeping SPA app, base on Vue, VueRouter, Vuex and by TypeScript completely. Store data by localstorage. Encountered many issue of Webpack and TypeScript.
+rMoney is a simple bookkeeping SPA app base on Vue, VueRouter, Vuex, and TypeScript ultimately. Store data by localstorage. Encountered many issues of Webpack and TypeScript.
 
 ## Project setup
 ```
